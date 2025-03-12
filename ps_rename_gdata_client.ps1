@@ -8,7 +8,7 @@ try {
 
 Get-ItemPropertyValue "HKLM:\SOFTWARE\WOW6432Node\G DATA"  -Name client_MachineGuid_name  -ErrorAction Stop | Out-Null 
 #Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\G DATA" 
-"GDATA RegValue found..."}
+"GDATA client_MachineGuid_name  found..."}
 
 catch {
 
@@ -26,3 +26,23 @@ if ((Get-ItemPropertyValue "HKLM:\SOFTWARE\WOW6432Node\G DATA"  -Name client_Mac
 
 New-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\G DATA" -Name client_MachineGuid_Name -Value $computername -force
 }
+
+
+try {
+
+Get-ItemPropertyValue "HKLM:\SOFTWARE\WOW6432Node\G DATA\AVKClient"  -Name ComputerName  -ErrorAction Stop | Out-Null 
+
+"GDATA ComputerName found..."
+
+remove-itemproperty -path "HKLM:\SOFTWARE\WOW6432Node\G DATA\AVKClient" -name "ComputerName"
+
+}
+
+catch {
+
+" GData ComputerName did not exist! That's good"
+
+return $false
+
+}
+
