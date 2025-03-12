@@ -35,6 +35,7 @@ Get-ItemPropertyValue "HKLM:\SOFTWARE\WOW6432Node\G DATA\AVKClient"  -Name Compu
 "GDATA ComputerName found..."
 
 remove-itemproperty -path "HKLM:\SOFTWARE\WOW6432Node\G DATA\AVKClient" -name "ComputerName"
+"GDATA ComputerName removed"
 
 }
 
